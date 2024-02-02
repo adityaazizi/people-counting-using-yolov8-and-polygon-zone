@@ -1,1 +1,1 @@
-# people-counting-using-yolov8-and-supervision
+# people-counting-using-yolov8-and-byte-track
