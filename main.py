@@ -48,7 +48,7 @@ vid_writer = cv2.VideoWriter(
 )
 cap = cv2.VideoCapture(SOURCE_VIDEO_PATH)
 
-for frame_num in tqdm(range(video_info.total_frames), desc="Rendering videos with Bounding Box: "):
+for _ in tqdm(range(video_info.total_frames), desc="Rendering videos with Bounding Box: "):
     ret, frame = cap.read()
     if not ret:
         break
