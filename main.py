@@ -6,9 +6,11 @@ import supervision as sv
 from tqdm import tqdm
 from ultralytics import YOLO
 
+
+CURRENT_DIRECTORY = os.getcwd()
 SOURCE_VIDEO_PATH = ''  # add your video path
 TARGET_VIDEO_PATH = ''  # add your video path
-MODEL = os.path.join(CURRENT_DIRECTORY, 'weight/yolov8n.pt')
+MODEL = os.path.join(CURRENT_DIRECTORY, 'weight/yolov8x.pt')
 
 model = YOLO(MODEL)
 model.fuse()
