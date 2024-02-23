@@ -8,12 +8,15 @@ from ultralytics import YOLO
 
 SOURCE_VIDEO_PATH = ''  # add your video path
 TARGET_VIDEO_PATH = ''  # add your video path
-MODEL = ''  # add your yolov8 model path
+MODEL = os.path.join(CURRENT_DIRECTORY, 'weight/yolov8n.pt')
 
 model = YOLO(MODEL)
 model.fuse()
 
-polygon = np.array([])  # draw your polygon here
+polygon = np.array([
+    # draw your polygon here
+])
+
 
 video_info = sv.VideoInfo.from_video_path(SOURCE_VIDEO_PATH)
 byte_tracker = sv.ByteTrack(
