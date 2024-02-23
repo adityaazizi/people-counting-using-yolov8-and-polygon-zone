@@ -26,7 +26,6 @@ byte_tracker = sv.ByteTrack(
     track_buffer=video_info.fps,
     match_thresh=0.8, frame_rate=video_info.fps
 )
-generator = sv.get_video_frames_generator(SOURCE_VIDEO_PATH)
 zone = sv.PolygonZone(
     polygon=polygon,
     frame_resolution_wh=video_info.resolution_wh
@@ -44,7 +43,7 @@ zone_annotator = sv.PolygonZoneAnnotator(
     text_scale=0.5
 )
 
-fourcc = cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')
+fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 vid_writer = cv2.VideoWriter(
     TARGET_VIDEO_PATH,
     fourcc,
@@ -82,7 +81,11 @@ for _ in tqdm(range(video_info.total_frames), desc="Rendering videos with Boundi
         detections=detections,
         labels=labels
     )
-
+    annotated_frame = sv.draw_polygon(
+        annotated_frame,
+        polygon,
+        color=sv.Color.red()
+    )
     annotated_frame = cv2.putText(
         annotated_frame,
         count_text,
